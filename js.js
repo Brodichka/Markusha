@@ -49,7 +49,7 @@ function addProductTocard(id) {
 }
 
 function drawCardProducts() {
-  if (card.length === 0) return (cardProd.innerHTML = "Card is empty");
+  if (card.length === 0) return (cardProd.innerHTML = `Card is empty`);
   cardProd.innerHTML = null;
   let sum = 0;
   card.forEach(function (p) {
@@ -66,6 +66,6 @@ function drawCardProducts() {
 }
 function buyAll() {
   card = [];
-  cardProd.innerHTML = "Гроші зняті";
+  cardProd.innerHTML = `Гроші зняті`;
   localStorage.setItem("card", "[]");
 }
