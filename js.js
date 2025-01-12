@@ -49,7 +49,7 @@ function addProductTocard(id) {
 }
 
 function drawCardProducts() {
-  if (card.length === 0) return (cardProd.innerHTML = `Card is empty`);
+  if (card.length === 0) return (cardProd.innerHTML = `Кошик порожній`);
   cardProd.innerHTML = null;
   let sum = 0;
   card.forEach(function (p) {
