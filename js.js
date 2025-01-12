@@ -24,9 +24,6 @@ fetch(url + "/products")
       productGrid.appendChild(pElem); // Додаємо продукт у DOM
     });
   })
-  .catch((error) => {
-    console.error("Помилка завантаження", error);
-  });
 function fun() {
   console.log("Функція");
 }
