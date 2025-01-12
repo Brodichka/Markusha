@@ -18,7 +18,7 @@ fetch(url + "/products").then(async function (response) {
                 <p class='product-price'>Ціна: ${p.price} грн</p>
                 <p class='product-description'>${p.description}</p>
                 <a href='#'>Профіль продавця</a>
-                <button onClick ="addProductTocard${p.id}">Купити</button>
+                <button onclick ="addProductTocard(${p.id})">Купити</button>
             `;
     productGrid.appendChild(pElem); // Додаємо продукт у DOM
   });
