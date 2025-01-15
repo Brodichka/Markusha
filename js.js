@@ -1,24 +1,32 @@
 let productGrid = document.getElementById("product-grid");
 let productsArray = [];
-let url = "https://my-json-server.typicode.com/Brodichka/Markusha";
+let url = "https://markusha-d631.restdb.io/rest/products"  ;
 
-fetch(url + "/products").then(async function (response) {
-  if (!response.ok) {
-    throw new Error(`HTTP error! Status: ${response.status}`); // логування
-  }
-  let products = await response.json();
-  productGrid.innerHTML = null; // Очищення контейнера
-  products.forEach((p) => {
+const my_headers = {
+  "Content-Type": "application/json",
+  "x-apikey": "6787e49877327a6a8f5a546a",
+  "cache-control": "no-cache",
+};
+
+fetch(url, {
+  method: "GET",
+  headers: my_headers,
+})
+.then(async function (responce){
+  productsArray = await responce.json();
+  console.log(productsArray);
+  productGrid.innerHTML = null;
+  productsArray.forEach(p => {
     productsArray.push(p);
     let pElem = document.createElement("div");
-    pElem.classList.add("product");
+    pElem.classList.add('product')
     pElem.innerHTML = `
                 <h2 class='product-name'>${p.name}</h2>
                 <img class='product-photo' src='${p.photo_url}' alt='${p.name}'>
                 <p class='product-price'>Ціна: ${p.price} грн</p>
                 <p class='product-description'>${p.description}</p>
                 <a href='#'>Профіль продавця</a>
-                <button onclick ="addProductTocard(${p.id})">Купити</button>
+                <button>Купити</button>
             `;
     productGrid.appendChild(pElem); // Додаємо продукт у DOM
   });
@@ -49,7 +57,7 @@ function addProductTocard(id) {
 }
 
 function drawCardProducts() {
-  if (card.length === 0) return (cardProd.innerHTML = `Кошик порожній`);
+  if (card.length === 0) return (cardProd.innerHTML = "Card is empty");
   cardProd.innerHTML = null;
   let sum = 0;
   card.forEach(function (p) {
@@ -66,6 +74,10 @@ function drawCardProducts() {
 }
 function buyAll() {
   card = [];
-  cardProd.innerHTML = `Гроші зняті`;
+  cardProd.innerHTML = "Гроші зняті";
   localStorage.setItem("card", "[]");
+}
+
+function openCard(){
+  cardProd.classList.toggle('hide');
 }
