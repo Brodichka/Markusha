@@ -5,7 +5,7 @@ let url = "https://markusha-d631.restdb.io/rest/products"  ;
 
 const my_headers = {
   "Content-Type": "application/json",
-  "x-apikey": "API_KEY",
+  "x-apikey": "6787e49877327a6a8f5a546a",
   "cache-control": "no-cache",
 };
 
